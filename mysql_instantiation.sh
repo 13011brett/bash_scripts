@@ -35,17 +35,6 @@ updateAndInstall(){
     
  }
 
-    #OLD WAY BELOW, found much easier path..
-    #mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$pword'";
-
-    # systemctl stop mysql
-    # touch mysql-init
-    # printf "ALTER USER 'root'@'localhost' IDENTIFIED BY 'brett'" > mysql-init
-    # echo "$PWD/mysql-init"
-    # mysqld --init-file=$pwd/mysql-init &
-    # systemctl start mysql
-
-
 createNewDB(){
     echo "Enter a DB name that you would like to create." #Could do an if to see if it's blank or not.
     read DBNAME
