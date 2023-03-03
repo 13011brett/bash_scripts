@@ -23,7 +23,13 @@ createNewDB(){
     echo "Enter a DB name that you would like to create." #Could do an if to see if it's blank or not.
     read DBNAME
     mysql -e "CREATE DATABASE ${DBNAME} /*\!40100 DEFAULT CHARACTER SET utf8 */;" && echo "${DBNAME} was created successfully." || exitOnError "${DBNAME} could not be created."
-    read teee
+    echo "Enter the Username associated with the DB."
+    read USERNAME
+    echo "Enter the password as well"
+    read PASSWORD
+    mysql -e "CREATE USER ${USERNAME}@localhost IDENTIFIED BY '${PASSWORD}'; "
+    mysql -e "GRANT ALL PRIVILEGES ON ${DBNAME}.* TO '${USERNAME}'@'localhost';"
+    mysql -e "FLUSH PRIVILEGES;"
     
     
 }
